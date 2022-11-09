@@ -1,0 +1,31 @@
+.card {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    text-align: center;
+    width: 50%;
+    padding-left: 350px;
+    padding-top: 100px;
+    
+}
+
+.card div {
+    
+}
+
+.card h1 {
+    font-weight: bold;
+}
+
+.card h2 {
+    font-weight:lighter;
+}
+
+.card button {
+    border-radius: 20px;
+    width: 200px;
+    height: 35px;
+    background-color: aqua;
+    cursor: pointer;
+    
+}
