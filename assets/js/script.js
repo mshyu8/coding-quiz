@@ -5,6 +5,8 @@ var h1 = document.querySelector("#h1");
 var h2 = document.querySelector("#h2");
 var timerCount = 75;
 var h4 = document.querySelector('#status');
+var quizzed = false;
+var h5 = document.querySelector('#form');
 
 
 
@@ -15,18 +17,48 @@ function endScreen(event) {
     answer2.remove();
     answer3.remove();
     answer4.remove();
+    quizzed = true;
+    h2.textContent = "Your final score is " + timerCount;
+    var label = document.createElement('label');
+    label.setAttribute("id", "label");
+    h5.appendChild(label);
+    label.textContent = ("Enter username: ");
+    var username = document.createElement('input');
+    username.setAttribute("id", "username");
+    h5.appendChild(username);
+    var userButton = document.createElement('button');
+    userButton.setAttribute("id", "userButton");
+    h5.appendChild(userButton);
+    userButton.textContent = ("Submit");
+    
+    userButton.addEventListener("click", leaderboard);
 }
+
+function leaderboard() {
+    var record = username.value + " " + timerCount;
+    h2.textContent = username.value + " --- " + timerCount;
+    console.log(record);
+    h1.textContent = ("High Scores");
+    label.remove();
+    username.remove();
+    userButton.remove();
+    h4.remove();
+}
+
 
 function startTimer() {
     // Sets timer
     timer = setInterval(function() {
-      timerCount--;
-      timeEl.textContent = "Time left: " + timerCount;
-     
-      // Tests if time has run out
-      if (timerCount === 0) {
-        // Clears interval
-        clearInterval(timer);
+        timerCount--;
+        timeEl.textContent = "Time left: " + timerCount;
+        
+        // Tests if time has run out
+        if (timerCount === 0) {
+            // Clears interval
+            clearInterval(timer);
+            h4.textContent = "You lost"
+        } else if (quizzed === true) {
+            clearInterval(timer);
       }
     }, 1000);
   }
