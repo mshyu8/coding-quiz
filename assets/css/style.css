@@ -53,3 +53,8 @@
     padding-left: 20px;
 
 }
+
+#status {
+    font-size: 30px;
+    opacity: 75%;
+}
