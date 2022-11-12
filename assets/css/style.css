@@ -9,6 +9,10 @@
     
 }
 
+#timeEl {
+    
+}
+
 .card div {
     
 }
@@ -19,13 +23,33 @@
 
 .card h2 {
     font-weight:lighter;
+    flex-direction: column;
 }
 
-.card button {
+#realStart {
     border-radius: 20px;
     width: 200px;
     height: 35px;
     background-color: aqua;
     cursor: pointer;
     
+}
+
+
+ #answer1,
+ #answer2,
+ #answer3,
+ #answer4 {
+    display: block;
+    margin-top: 30px;
+    border-radius: 20px;
+    width: 300px;
+    height: 35px;
+    background-color: aqua;
+    cursor: pointer;
+    margin-left: 75px;
+    font-size: 20px;
+    text-align: left;
+    padding-left: 20px;
+
 }
