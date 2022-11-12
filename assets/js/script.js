@@ -3,7 +3,7 @@ var realStart = document.querySelector("#realStart");
 var card = document.querySelector(".card");
 var h1 = document.querySelector("#h1");
 var h2 = document.querySelector("#h2");
-var timeLeft = 75;
+var timerCount = 75;
 
 //function hide(event) {
     //    event.currentTarget.style.visibility = 'hidden';
@@ -42,7 +42,7 @@ function question1(event) {
     answer4.setAttribute('id', 'answer4');
     h2.appendChild(answer4);
     answer4.textContent = "4. Numbers";
-    
+
     
     startButton.addEventListener("click", question2);
 }
@@ -54,6 +54,12 @@ function question2(event) {
     answer3.textContent = "3. Parenthesis";
     answer4.textContent = "4. Square Brackets";
     startButton.addEventListener("click", question3);
+
+    if (answer1) {
+        console.log("yes");
+    } else {
+        console.log("no");
+    }
 }
 
 function question3(event) {
@@ -92,30 +98,57 @@ function endScreen(event) {
     answer4.remove();
 }
 
-var timerInterval = setInterval(function() {
-    timeLeft--;
-    timeEl.textContent = "Time left: " + timeLeft;
-    
-    if(secondsLeft === 0) {
-        // Stops execution of action at set interval
-        clearInterval(timerInterval);
-        // Calls function to create and append image
-        sendMessage();
+function startTimer() {
+    // Sets timer
+    timer = setInterval(function() {
+      timerCount--;
+      timeEl.textContent = "Time left: " + timerCount;
+     
+      // Tests if time has run out
+      if (timerCount === 0) {
+        // Clears interval
+        clearInterval(timer);
+      }
+    }, 1000);
+  }
+
+
+//realStart.addEventListener("click", startTimer);
+
+
+
+//startButton.addEventListener("click", question1);
+
+function start() {
+    if (realStart) {     
+        h1.textContent = "Commonly used data types DO Not include";
+        h2.textContent = "";
+        realStart.remove();
+        var answer1 = document.createElement('button');
+        answer1.setAttribute('id', 'answer1');
+        h2.appendChild(answer1);
+        answer1.textContent = "1. Strings";
+        var answer2 = document.createElement('button');
+        answer2.setAttribute('id', 'answer2');
+        h2.appendChild(answer2);
+        answer2.textContent = "2. Booleans";
+        var answer3 = document.createElement('button');
+        answer3.setAttribute('id', 'answer3');
+        h2.appendChild(answer3);
+        answer3.textContent = "3. Alerts";
+        var answer4 = document.createElement('button');
+        answer4.setAttribute('id', 'answer4');
+        h2.appendChild(answer4);
+        answer4.textContent = "4. Numbers";  
     } 
-    
-}, 1000); 
+}
 
+function q1() {
+    if (answer1) {
+        console.log("lol yah");
+    } else if (answer2) {
+        console.log("lol noooo");
+    }
+}
 
-realStart.addEventListener("click", setInterval);
-
-
-
-startButton.addEventListener("click", question1);
-
-
-
-
-
-    
-
-
+realStart.addEventListener("click", start);
