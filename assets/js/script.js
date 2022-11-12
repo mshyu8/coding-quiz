@@ -35,15 +35,26 @@ function endScreen(event) {
 }
 
 function leaderboard() {
-    var record = username.value + " " + timerCount;
-    h2.textContent = username.value + " --- " + timerCount;
-    console.log(record);
+    var rank = username.value + " --- " + timerCount;
+    localStorage.setItem("rank", rank);
+    //var record = username.value + " " + timerCount;
+    //h2.textContent = username.value + " --- " + timerCount;
+    //console.log(record);
     h1.textContent = ("High Scores");
     label.remove();
     username.remove();
     userButton.remove();
     h4.remove();
+    renderLastRegistered();
 }
+
+function renderLastRegistered() {
+    var rank = localStorage.getItem("rank");
+   
+  
+    h2.textContent = rank;
+   
+  }
 
 
 function startTimer() {
